@@ -129,13 +129,15 @@ index.calc <- function(progress, prog_int, metadata, cio, outputFolders, climdex
     # Climdex functions only check if cio data are NULL.
     index.stored[index.stored == -Inf] <- NA
     write.index.csv(index.stored, index.name = tmp.index.name, freq = frequency, header = tmp.index.def, metadata, climdexInputParams, outputFolders)
-    plot.call(index.stored,
-      index.name = tmp.index.name,
-      index.units = as.character(index.list$Units[i]),
-      x.label = "Years",
-      sub = tmp.index.def,
-      freq = frequency,
-      metadata, outputFolders, pdf.dev)
+
+    # RJHD 22 Jun 2023 commented out else loop only did first index (FD-ANN)
+#    plot.call(index.stored,
+#      index.name = tmp.index.name,
+#      index.units = as.character(index.list$Units[i]),
+#      x.label = "Years",
+#      sub = tmp.index.def,
+#      freq = frequency,
+#      metadata, outputFolders, pdf.dev)
 
     if (exists("mktrend")) {
       cat(file = trend_file, paste(tmp.index.name, frequency, metadata$year.start, metadata$year.end, mktrend[[1]][1], mktrend[[1]][2], mktrend[[1]][3], sep = ","), fill = 180, append = T)
